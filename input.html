@@ -1,0 +1,29 @@
+<form name="myForm" id="myForm" novalidate="">
+	<div ng-repeat="form in $ctrl.forms track by $index">
+		<div ng-switch="form.type">
+			<div ng-switch-when="text" style="margin-bottom:10px;">
+				<b ng-bind="form.label"></b>
+				<input
+					type="text"
+					name="{{form.name}}"
+					ng-model="form.model"
+					ng-required="{{form.required}}"
+					ng-disabled="{{form.disabled}}"
+					placeholder="{{form.placeholder}}"
+				/>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<button type="button" class="btn btn-success" ng-click="$ctrl.formValidate(myForm);">Submit</button>
+	</div>
+
+	<pre>
+	myForm.$valid = {{myForm.$valid}}
+	myForm.$invalid = {{myForm.$invalid}}
+	myForm.$dirty = {{myForm.$dirty}}
+	myForm.$pristine = {{myForm.$pristine}}
+	myForm.$touched = {{myForm.$touched}}
+	</pre>
+</form>
